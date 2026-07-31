@@ -3,24 +3,22 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
-  // Por ahora dejamos el nombre estático hasta que migremos el Login/Sesiones
+  // Dejamos el nombre estático como lo tenías
   const [username] = useState('Olivia'); 
   
   // Inicializamos los contadores en 0
   const [productCount, setProductCount] = useState(0);
   const [categoryCount, setCategoryCount] = useState(0);
 
-  // useEffect se ejecuta automáticamente al abrir la página
+  // Se ejecuta automáticamente al abrir la página
   useEffect(() => {
     // Hacemos la petición a la ruta de estadísticas de tu backend
     fetch('http://localhost:3001/api/stats')
       .then(response => response.json())
       .then(data => {
-        // Actualizamos el estado con los datos reales.
-        // Nota: Los nombres "data.productos" o "data.categorias" dependerán 
-        // de cómo los envíe tu backend.
-        setProductCount(data.totalProducts || data.productos || 0);
-        setCategoryCount(data.totalCategories || data.categorias || 0);
+        // Actualizamos el estado con los datos reales que llegan de SQLite
+        setProductCount(data.totalProducts || 0);
+        setCategoryCount(data.totalCategories || 0);
       })
       .catch(error => console.error("Error cargando estadísticas:", error));
   }, []);
@@ -32,6 +30,7 @@ const Home = () => {
       </header>
 
       <div className="home-cards-container">
+        {/* Tarjeta de Productos */}
         <div className="home-card">
           <div className="card-info">
             <span className="card-icon">📦</span>
@@ -43,6 +42,7 @@ const Home = () => {
           </div>
         </div>
 
+        {/* Tarjeta de Categorías */}
         <div className="home-card">
           <div className="card-info">
             <span className="card-icon">🏪</span>

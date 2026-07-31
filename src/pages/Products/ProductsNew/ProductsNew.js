@@ -61,8 +61,7 @@ const ProductsNew = () => {
       stock: stockInt || 0
     };
 
-    // Petición POST a la ruta correcta que espera el backend ('/')
-    fetch('http://localhost:3000/products', {
+    fetch('http://localhost:3001/api/products', { // <-- Cambiamos 3000 por 3001
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
