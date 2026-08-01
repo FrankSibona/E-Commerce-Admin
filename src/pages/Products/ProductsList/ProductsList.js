@@ -7,7 +7,7 @@ const ProductsList = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Traer productos del backend
+
   useEffect(() => {
     fetch('http://localhost:3001/api/products')
       .then(res => res.json())
@@ -21,14 +21,14 @@ const ProductsList = () => {
       });
   }, []);
 
-  // Lógica del buscador (US #8)
+
   const filteredProducts = products.filter(product => 
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="products-list-container">
-      {/* Encabezado con buscador y botón (US #7) */}
+      {}
       <header className="list-header">
         <h2>Productos</h2>
         <div className="header-actions">
@@ -48,7 +48,7 @@ const ProductsList = () => {
         </div>
       </header>
 
-      {/* Lista de productos */}
+      {}
       <div className="list-content">
         {loading ? (
           <p className="loading-text">Cargando...</p>
@@ -59,7 +59,7 @@ const ProductsList = () => {
             {filteredProducts.map(product => (
               <li key={product.id} className="product-item">
                 <div className="item-info">
-                  {/* Bonus: Aviso de carga en la imagen (usamos el alt mientras carga o falla) */}
+                  {}
                   <img src={product.image || 'https://via.placeholder.com/50'} alt={product.name} className="item-image" />
                   <div className="item-details">
                     <h4>{product.name}</h4>

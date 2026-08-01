@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
-  // Estado preparado para las futuras sesiones (US #6)
+
   const [username] = useState('Emilio'); 
   
   const [productCount, setProductCount] = useState(0);
@@ -27,7 +27,7 @@ const Home = () => {
 
       <div className="home-cards-container">
         
-        {/* FILA DE PRODUCTOS */}
+        {}
         <div className="dashboard-row">
           <div className="row-info">
             <span className="row-icon">📦</span>
@@ -39,7 +39,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* FILA DE CATEGORÍAS */}
+        {}
         <div className="dashboard-row">
           <div className="row-info">
             <span className="row-icon">🏪</span>

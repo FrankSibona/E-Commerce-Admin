@@ -96,7 +96,7 @@
 .product-price {
   font-size: 2rem;
   font-weight: 700;
-  color: #2b8a3e; /* Un tono verde para el precio */
+  color: #2b8a3e; 
 }
 
 .product-stock {
@@ -119,7 +119,7 @@
 }
 
 .detail-actions {
-  margin-top: auto; /* Empuja el botón hacia abajo */
+  margin-top: auto; 
   padding-top: 1rem;
 }
 
@@ -151,7 +151,7 @@
   color: #dc3545;
 }
 
-/* Responsive para pantallas pequeñas */
+
 @media (max-width: 768px) {
   .product-detail-card {
     flex-direction: column;
