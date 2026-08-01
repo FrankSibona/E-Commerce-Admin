@@ -1,0 +1,126 @@
+.product-view-container {
+  color: white;
+}
+
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.view-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.btn-delete {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px; /* Botón tipo píldora */
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #ec0000; /* Se pone rojo Santander al pasar el mouse por advertencia */
+}
+
+.product-form {
+  background-color: #222;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.form-input {
+  padding: 10px 15px;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 20px; /* Inputs redondeados como en el mockup */
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  border-color: #ec0000;
+}
+
+.text-area {
+  border-radius: 10px; /* El textarea lleva menos borde redondeado para no deformarse */
+  resize: vertical;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.half-width {
+  flex: 1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-cancel {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #555;
+}
+
+.btn-save {
+  background-color: #ec0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-save:hover {
+  background-color: #c00000;
+}
+
+/* Responsivo para que no se rompa en celulares */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

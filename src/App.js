@@ -1,30 +1,59 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import MainLayout from './components/MainLayout';
+// --- Importaciones de tus Páginas ---
 import Home from './pages/Home/Home';
 import ProductsList from './pages/Products/ProductsList/ProductsList';
 import ProductView from './pages/Products/ProductView/ProductView';
 import ProductsNew from './pages/Products/ProductsNew/ProductsNew';
 import CategoriesList from './pages/Categories/CategoriesList/CategoriesList';
+import CategoryView from './pages/Categories/CategoryView/CategoryView';
+
+// Importación del MainLayout activa
+import MainLayout from './components/MainLayout';
+
+// --- Vistas temporales para cumplir con la User Story ---
+const Profile = () => (
+  <div style={{ color: 'white', padding: '20px' }}>
+    <h2>Perfil de Usuario</h2>
+    <p>Vista en construcción...</p>
+  </div>
+);
+
+const NotFound = () => (
+  <div style={{ color: 'white', padding: '20px', textAlign: 'center' }}>
+    <h2>⚠️ Error 404</h2>
+    <p>La ruta que intentás buscar no existe o aún no fue implementada.</p>
+  </div>
+);
 
 function App() {
   return (
-    <Router>
-      {/* Ya no pasamos isAdmin, React asume que todo el que entra es Admin */}
+    <BrowserRouter>
+      {/* El MainLayout ahora envuelve a todas las rutas */}
       <MainLayout>
         <Routes>
+          {/* Ruta de Inicio */}
           <Route path="/" element={<Home />} />
+
+          {/* Rutas de Productos */}
           <Route path="/products" element={<ProductsList />} />
           <Route path="/products/new" element={<ProductsNew />} />
-          <Route path="/products/:id/edit" element={<ProductView />} />
+          <Route path="/products/:id" element={<ProductView />} />
+
+          {/* Rutas de Categorías */}
           <Route path="/categories" element={<CategoriesList />} />
-          <Route path="/profile" element={<div><h1>Página de Perfil</h1></div>} />
-          <Route path="*" element={<div><h1>Error 404 - Página no encontrada</h1></div>} />
+          <Route path="/categories/new" element={<CategoryView />} />
+          <Route path="/categories/:id" element={<CategoryView />} />
+
+          {/* Ruta de Perfil */}
+          <Route path="/profile" element={<Profile />} />
+
+          {/* Ruta por default (Catch-all) para el Error 404 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </MainLayout>
-    </Router>
+    </BrowserRouter>
   );
 }
 
