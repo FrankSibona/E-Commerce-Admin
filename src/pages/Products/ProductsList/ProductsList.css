@@ -39,7 +39,7 @@
 .btn-view { color: #888; text-decoration: none; transition: color 0.2s; }
 .btn-view:hover { color: white; }
 
-/* Responsive Bonus */
+
 @media (max-width: 768px) {
   .search-box input { width: 100px; transition: width 0.3s; }
   .search-box input:focus { width: 150px; }

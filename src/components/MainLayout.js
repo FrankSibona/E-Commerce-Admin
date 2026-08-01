@@ -10,10 +10,10 @@ const MainLayout = ({ children }) => {
 
   return (
     <div className="layout-container">
-      {/* Overlay oscuro para cerrar en mobile tocando afuera (Escenario 7) */}
+      {}
       {isSidebarOpen && <div className="overlay" onClick={closeSidebar}></div>}
 
-      {/* --- SIDEBAR --- */}
+      {}
       <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-top">
           <div className="sidebar-logo">
@@ -21,7 +21,7 @@ const MainLayout = ({ children }) => {
             <button className="close-btn" onClick={closeSidebar}>✖</button>
           </div>
           
-          {/* Navegación con NavLink para el estado activo */}
+          {}
           <nav className="sidebar-nav">
             <NavLink to="/" onClick={closeSidebar} className={({isActive}) => isActive ? "nav-item active" : "nav-item"} end>
               🏠 Inicio
@@ -35,7 +35,7 @@ const MainLayout = ({ children }) => {
           </nav>
         </div>
 
-        {/* --- LINK DE PERFIL AL FONDO --- */}
+        {}
         <div className="sidebar-bottom">
           <Link to="/profile" onClick={closeSidebar} className="profile-link">
             <span className="avatar">👤</span> Admin
@@ -43,11 +43,11 @@ const MainLayout = ({ children }) => {
         </div>
       </aside>
 
-      {/* --- MAIN AREA --- */}
+      {}
       <main className="main-area">
         <header className="main-header">
           <button className="menu-btn" onClick={toggleSidebar}>☰</button>
-          {/* El header puede quedar vacío o con un título genérico */}
+          {}
         </header>
         <div className="main-content">
           {children} 

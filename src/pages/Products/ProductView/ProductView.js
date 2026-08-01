@@ -7,7 +7,7 @@ const ProductView = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState({ name: '', price: 0, stock: 0, description: '', image: '', category: '' });
 
-  // Cargar datos actuales
+
   useEffect(() => {
     fetch(`http://localhost:3001/api/products/${id}`)
       .then(res => res.json())
@@ -20,7 +20,7 @@ const ProductView = () => {
     setProduct({ ...product, [name]: value });
   };
 
-  // Guardar cambios (PUT)
+
   const handleSave = (e) => {
     e.preventDefault();
     fetch(`http://localhost:3001/api/products/${id}`, {
@@ -32,7 +32,7 @@ const ProductView = () => {
     .catch(err => console.error("Error al actualizar", err));
   };
 
-  // Eliminar (DELETE)
+
   const handleDelete = () => {
     if(window.confirm("¿Seguro que querés eliminar este producto?")) {
       fetch(`http://localhost:3001/api/products/${id}`, { method: 'DELETE' })

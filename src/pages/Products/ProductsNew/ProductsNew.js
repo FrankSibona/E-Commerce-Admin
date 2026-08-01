@@ -10,7 +10,7 @@ const ProductsNew = () => {
     setProduct({ ...product, [name]: value });
   };
 
-  // Crear nuevo (POST)
+
   const handleSave = (e) => {
     e.preventDefault();
     fetch('http://localhost:3001/api/products', {
