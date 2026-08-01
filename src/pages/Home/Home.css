@@ -1,100 +1,79 @@
 .home-container {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  color: white;
 }
 
 .home-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #f4f4f5;
-  margin: 0;
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 30px;
 }
 
 .home-cards-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
-.home-card {
-  background-color: #18181b;
-  border: 1px solid #27272a;
-  border-radius: 12px;
-  padding: 24px 30px;
+/* Filas del Dashboard */
+.dashboard-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.2s;
+  background-color: #222; /* Fondo gris oscuro */
+  padding: 20px 30px;
+  border-radius: 10px;
 }
 
-.home-card:hover {
-  border-color: #3f3f46;
-}
-
-.card-info {
+.row-info {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 15px;
 }
 
-.card-icon {
-  font-size: 1.8rem;
+.row-icon {
+  font-size: 24px;
 }
 
-.card-info h3 {
-  font-size: 1.3rem;
-  color: #f4f4f5;
+.row-info h3 {
   margin: 0;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: normal;
+  color: #ccc;
 }
 
-.card-actions {
+.row-info h3 strong {
+  color: white;
+  font-size: 20px;
+}
+
+/* Botones grises del diseño */
+.row-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
-/* Botones de acción dentro de las tarjetas */
 .btn-secondary {
-  background-color: #27272a;
-  color: #f4f4f5;
+  background-color: #444;
+  color: white;
   text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: background 0.2s;
+  padding: 8px 16px;
+  border-radius: 20px; /* Bordes redondeados tipo píldora */
+  font-size: 14px;
+  transition: background-color 0.2s;
 }
 
 .btn-secondary:hover {
-  background-color: #3f3f46;
-}
-
-.btn-primary {
-  background-color: #3f3f46;
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: background 0.2s;
-}
-
-.btn-primary:hover {
-  background-color: #52525b;
+  background-color: #555;
 }
 
 /* Responsive para pantallas chicas */
 @media (max-width: 768px) {
-  .home-card {
+  .dashboard-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
   }
-  
-  .card-actions {
+  .row-actions {
     width: 100%;
     justify-content: flex-end;
   }

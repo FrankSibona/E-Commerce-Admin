@@ -1,51 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './ProductsList.css';
 
-// Ya no recibimos la prop "isAdmin"
 const ProductsList = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  // Fetch a tu API en Express (puerto 3001) para traer los productos de SQLite
+  // Traer productos del backend
   useEffect(() => {
     fetch('http://localhost:3001/api/products')
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error('Error al cargar productos:', err));
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error al cargar productos:", err);
+        setLoading(false);
+      });
   }, []);
 
-  const handleDelete = (id) => {
-    // Lógica para eliminar un producto
-    console.log("Eliminando producto", id);
-  };
+  // Lógica del buscador (US #8)
+  const filteredProducts = products.filter(product => 
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="products-list-container">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h3>Catálogo de Productos</h3>
-        
-        {/* Este botón ahora SIEMPRE se muestra porque estamos en el panel de Admin */}
-        <Link to="/products/new" style={{ background: '#007bff', color: 'white', padding: '10px 15px', textDecoration: 'none', borderRadius: '5px' }}>
-          + Nuevo Producto
-        </Link>
-      </div>
-
-      <div className="products-grid">
-        {products.map((product) => (
-          <div key={product.id} className="product-card" style={{ border: '1px solid #ccc', padding: '15px', marginBottom: '10px' }}>
-            <h4>{product.name}</h4>
-            <p>Precio: ${product.price}</p>
-            
-            {/* Estos botones de administración ahora SIEMPRE están visibles */}
-            <div className="admin-actions" style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
-              <Link to={`/products/${product.id}/edit`} style={{ color: 'orange', textDecoration: 'none' }}>
-                ✏️ Editar
-              </Link>
-              <button onClick={() => handleDelete(product.id)} style={{ color: 'red', border: 'none', background: 'none', cursor: 'pointer' }}>
-                🗑️ Eliminar
-              </button>
-            </div>
+      {/* Encabezado con buscador y botón (US #7) */}
+      <header className="list-header">
+        <h2>Productos</h2>
+        <div className="header-actions">
+          <div className="search-box">
+            <span className="search-icon">🔍</span>
+            <input 
+              type="text" 
+              placeholder="Buscar productos..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
-        ))}
+          <Link to="/products/new" className="btn-add">
+            <span className="add-text">Agregar Producto</span>
+            <span className="add-icon">+</span>
+          </Link>
+        </div>
+      </header>
+
+      {/* Lista de productos */}
+      <div className="list-content">
+        {loading ? (
+          <p className="loading-text">Cargando...</p>
+        ) : filteredProducts.length === 0 ? (
+          <p className="empty-text">No hay elementos coincidentes.</p>
+        ) : (
+          <ul className="product-items">
+            {filteredProducts.map(product => (
+              <li key={product.id} className="product-item">
+                <div className="item-info">
+                  {/* Bonus: Aviso de carga en la imagen (usamos el alt mientras carga o falla) */}
+                  <img src={product.image || 'https://via.placeholder.com/50'} alt={product.name} className="item-image" />
+                  <div className="item-details">
+                    <h4>{product.name}</h4>
+                    <p>#{product.id}</p>
+                  </div>
+                </div>
+                <Link to={`/products/${product.id}`} className="btn-view">Ver / Editar {'>'}</Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

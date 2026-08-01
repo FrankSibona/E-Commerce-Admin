@@ -1,166 +1,49 @@
-.products-list-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.products-list-container { color: white; }
+
+.list-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px; flex-wrap: wrap; gap: 15px;
 }
 
-/* Encabezado fijo superior */
-.products-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #27272a;
-  position: sticky;
-  top: 0;
-  background-color: #121214;
-  z-index: 10;
-}
+.header-actions { display: flex; gap: 15px; align-items: center; }
 
-.products-header h2 {
-  font-size: 1.8rem;
-  color: #f4f4f5;
-  margin: 0;
-}
-
-.products-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-/* Barra de búsqueda */
 .search-box {
-  display: flex;
-  align-items: center;
-  background-color: #18181b;
-  border: 1px solid #27272a;
-  border-radius: 24px;
-  padding: 8px 16px;
-  width: 280px;
-  transition: border-color 0.2s;
-}
-
-.search-box:focus-within {
-  border-color: #52525b;
-}
-
-.search-icon {
-  margin-right: 10px;
-  font-size: 0.9rem;
+  display: flex; align-items: center; background: #333;
+  border-radius: 20px; padding: 5px 15px;
 }
 
 .search-box input {
-  background: transparent;
-  border: none;
-  color: #f4f4f5;
-  outline: none;
-  width: 100%;
-  font-size: 0.95rem;
+  background: transparent; border: none; color: white;
+  padding: 8px; outline: none; width: 200px;
 }
 
-.search-box input::placeholder {
-  color: #71717a;
+.btn-add {
+  background: #444; color: white; text-decoration: none;
+  padding: 10px 20px; border-radius: 20px; display: flex; align-items: center; gap: 5px;
 }
 
-/* Botón flotante/circular de Agregar Producto (+) */
-.btn-add-product {
-  background-color: #27272a;
-  color: #f4f4f5;
-  border: 1px solid #3f3f46;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s;
+.add-icon { display: none; font-weight: bold; }
+
+.product-items { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;}
+
+.product-item {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #222; padding: 15px 20px; border-radius: 10px;
 }
 
-.btn-add-product:hover {
-  background-color: #3f3f46;
-}
+.item-info { display: flex; align-items: center; gap: 15px; }
+.item-image { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; background: #444; }
+.item-details h4 { margin: 0 0 5px 0; font-size: 16px; font-weight: normal; }
+.item-details p { margin: 0; color: #888; font-size: 12px; }
 
-/* Estados de carga y listado */
-.products-content {
-  margin-top: 20px;
-  flex: 1;
-}
+.btn-view { color: #888; text-decoration: none; transition: color 0.2s; }
+.btn-view:hover { color: white; }
 
-.loading-state, .no-results {
-  text-align: center;
-  color: #a1a1aa;
-  font-size: 1.1rem;
-  margin-top: 40px;
-}
-
-.products-items-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Tarjeta individual de producto */
-.product-item-card {
-  background-color: #18181b;
-  border: 1px solid #27272a;
-  border-radius: 12px;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.product-item-card:hover {
-  background-color: #27272a;
-  border-color: #3f3f46;
-}
-
-.product-item-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #27272a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-item-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.image-placeholder {
-  width: 100%;
-  height: 100%;
-  background-color: #3f3f46;
-}
-
-.product-item-info {
-  flex: 1;
-  margin-left: 20px;
-}
-
-.product-item-info h3 {
-  font-size: 1.1rem;
-  color: #f4f4f5;
-  margin: 0 0 4px 0;
-}
-
-.product-item-info p {
-  font-size: 0.9rem;
-  color: #a1a1aa;
-  margin: 0;
-}
-
-.product-item-arrow span {
-  font-size: 1.5rem;
-  color: #71717a;
+/* Responsive Bonus */
+@media (max-width: 768px) {
+  .search-box input { width: 100px; transition: width 0.3s; }
+  .search-box input:focus { width: 150px; }
+  .add-text { display: none; }
+  .add-icon { display: block; font-size: 18px; }
+  .btn-add { padding: 10px 15px; }
 }
